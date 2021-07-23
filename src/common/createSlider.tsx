@@ -15,7 +15,7 @@ function noop() {}
 
 export default function createSlider<
   Props extends GenericSliderProps,
-  State extends GenericSliderState
+  State extends GenericSliderState,
 >(Component: GenericSlider<Props, State>): React.ComponentClass<Props, State> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return class ComponentEnhancer extends Component {
@@ -366,6 +366,7 @@ export default function createSlider<
             min={min}
             dotStyle={dotStyle}
             activeDotStyle={activeDotStyle}
+            onClick={disabled ? noop : this.onClickMarkLabel}
           />
           {handles}
           <Marks
